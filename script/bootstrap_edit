@@ -93,7 +93,8 @@ create_files()
 depend_crits()
 {
     printf "${HEAD}Installing Python Dependencies${END}\n"
-    sudo ${PIP} install -r requirements.txt
+    ## requirements.txt is one directory above
+    sudo ${PIP} install -r ../requirements.txt
     if [ $? -ne 0 ]
     then
         printf "${FAIL}Dependency installation failed!${END}\n
@@ -305,7 +306,8 @@ red_hat_install()
     fi
     
     printf "${INFO}Installing Packages${END}\n"
-    sudo yum -y install make gcc gcc-c++ kernel-devel git openldap-devel pcre pcre-devel curl libpcap-devel python-devel python-pip libxml2-devel libxslt-devel libyaml-devel numactl ssdeep ssdeep-devel openssl-devel zip unzip gzip bzip2 swig
+    ##added 3 packages to end of line below to resolve python Pillow install
+    sudo yum -y install make gcc gcc-c++ kernel-devel git openldap-devel pcre pcre-devel curl libpcap-devel python-devel python-pip libxml2-devel libxslt-devel libyaml-devel numactl ssdeep ssdeep-devel openssl-devel zip unzip gzip bzip2 swiglibjpeg-turbo-devel libwebp openjpeg 
     sudo yum -y install p7zip p7zip-plugins
     sudo yum -y install libffi-devel
     sudo yum -y install libyaml
@@ -342,7 +344,8 @@ centos_install()
     fi
 
     printf "${INFO}Installing Packages${END}\n"
-    sudo yum -y install make gcc gcc-c++ kernel-devel git openldap-devel pcre pcre-devel curl libpcap-devel python-devel python-pip libxml2-devel libxslt-devel libyaml-devel numactl ssdeep ssdeep-devel openssl-devel zip unzip gzip bzip2 swig
+    ##added 3 packages to end of line below to resolve python Pillow install
+    sudo yum -y install make gcc gcc-c++ kernel-devel git openldap-devel pcre pcre-devel curl libpcap-devel python-devel python-pip libxml2-devel libxslt-devel libyaml-devel numactl ssdeep ssdeep-devel openssl-devel zip unzip gzip bzip2 swig libjpeg-turbo-devel libwebp openjpeg
     sudo yum -y install p7zip p7zip-plugins
     sudo yum -y install libffi-devel
     sudo yum -y install libyaml
